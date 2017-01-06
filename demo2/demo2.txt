@@ -1,0 +1,11 @@
+# Build the Dockerfile into an image
+docker build --tag quiqup/demo2 .
+
+# See the images
+docker images
+
+# Run the container
+docker run <ID/NAME>
+docker run --name foobar <ID/NAME>
+
+docker ps -a

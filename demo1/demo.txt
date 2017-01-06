@@ -1,0 +1,61 @@
+# Create VM for docker host
+docker-machine create --driver virtualbox demo
+
+# Just for info
+docker-machine env demo
+
+# Setup env to make this machine active
+eval "$(docker-machine env demo)"
+
+---
+
+# Will pull down image as not local
+docker run -it busybox
+
+# Container still running
+Crtl P+Q
+
+# See running and stopped containers
+docker ps
+docker ps -a
+
+# Reattach back to it (can connect as many times as you want)
+docker attach <ID/NAME>
+
+---
+
+# Make changes to the image in the container
+docker run -i -t busybox
+$ cd home
+$ touch abc
+
+# See the changes made
+docker diff <ID/NAME>
+
+$ exit
+
+# Can restart
+docker start <ID/NAME>
+
+# And see it running
+docker ps
+
+# Can attach again and see the files still there
+docker attach <ID/
+
+# Clean up
+docker rm `docker ps -aq --no-trunc`
+
+---
+
+# Start a new container
+docker run -it busybox
+
+# Make a change to it (install some software)
+$ cd home && echo "inside" > file1.txt
+
+# Save the changes
+docker commit <ID/> quiqup/fun
+
+# See the image
+docker images

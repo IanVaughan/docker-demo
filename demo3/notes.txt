@@ -1,0 +1,8 @@
+# Build the image
+docker build -t mount-point-demo .
+
+docker inspect mount-point-demo
+
+# run a container from the above image
+docker run --rm -it mount-point-demo
+
